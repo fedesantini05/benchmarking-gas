@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+.env
+.env.*
+!.env.example
+config/local/
+data/
+outputs/
+resultados/
+cache/
+sgc/cache/
+sgc/resultados/
+*.xlsx
+*.xls
+*.pdf
+*.PDF
+*.log
+*.pem
+*.key
+# Herramientas históricas locales con rutas específicas de esta computadora.
+/tools/build_portable.py
+/tools/refine_ocr.py

@@ -1,0 +1,57 @@
+{
+  "company": {
+    "legal_name": "Contugas S.A.C.",
+    "country": "Perú",
+    "source_currency": "USD",
+    "output_currency": "PEN",
+    "source_unit": "thousands",
+    "output_unit": "millions"
+  },
+  "adapter": "contugas",
+  "template": "data/contugas/plantilla.xlsx",
+  "reports": {
+    "2022": "data/contugas/Contugas S.A.C. - informe contable - 2022.pdf",
+    "2024": "data/contugas/Contugas S.A.C. - informe contable - 2024.pdf"
+  },
+  "report_periods": {
+    "2022": [
+      2022
+    ],
+    "2024": [
+      2024,
+      2023
+    ]
+  },
+  "period_columns": {
+    "2022": "J",
+    "2023": "K",
+    "2024": "L",
+    "2025": "M"
+  },
+  "exchange_rates": {
+    "2022": 3.82,
+    "2023": 3.713,
+    "2024": 3.77
+  },
+  "pages": {
+    "2022": {
+      "balance": 6,
+      "income_statement": 7,
+      "intangibles": 48,
+      "revenue_note": 53,
+      "costs_note": 54,
+      "personnel_note": 55
+    },
+    "2024": {
+      "balance": 6,
+      "income_statement": 7,
+      "intangibles": 45,
+      "equity_note": 50,
+      "revenue_note": 51,
+      "costs_note": 52,
+      "tax_note": 53
+    }
+  },
+  "output_dir": "outputs/contugas",
+  "output_filename": "PE - Contugas - Planilla Info Pública - Datos Financieros - 2022-2024 - automatizada.xlsx"
+}

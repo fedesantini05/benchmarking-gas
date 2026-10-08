@@ -1,0 +1,22 @@
+{
+  "company": "Companhia Potiguar de Gas (Potigas)",
+  "country": "Brasil",
+  "years": [
+    2023,
+    2024,
+    2025
+  ],
+  "template": "data/potigas/plantilla.xlsx",
+  "reports": {
+    "2023": "data/potigas/Potigas - informe contable - 2023.pdf",
+    "2024": "data/potigas/Potigas - informe contable - 2024.pdf",
+    "2025": "data/potigas/Potigas - informe contable - 2025.pdf"
+  },
+  "period_columns": {
+    "2023": "K",
+    "2024": "L",
+    "2025": "M"
+  },
+  "output_dir": "outputs/potigas",
+  "output_filename": "BR - Potigas - Planilla Info Publica - Datos Financieros - 2023-2025 - Python - independiente.xlsx"
+}

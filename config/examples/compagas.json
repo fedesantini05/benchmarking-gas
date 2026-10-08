@@ -1,0 +1,32 @@
+{
+  "company": "Companhia Paranaense de Gas S.A.",
+  "country": "Brasil",
+  "years": [
+    2023,
+    2024,
+    2025
+  ],
+  "template": "data/compagas/plantilla.xlsx",
+  "reports": {
+    "2023": "data/compagas/Compagas - Informe contable - 2023.pdf",
+    "2024": "data/compagas/Compagas - Informe contable - 2024.pdf",
+    "2025": "data/compagas/Compagas - Informe contable - 2025.pdf"
+  },
+  "period_columns": {
+    "2023": "K",
+    "2024": "L",
+    "2025": "M"
+  },
+  "policies": {
+    "use_original_annual_report_for_each_year": true,
+    "source_unit": "thousands_BRL",
+    "target_unit": "millions_BRL",
+    "expenses_negative": true,
+    "positive_operating_reversals_row": 13,
+    "pmso_2025_estimation": "combined_2023_2024_historical_share",
+    "working_capital_formula": "row_26=row_27-row_28",
+    "fixed_assets_formula": "row_29=row_30-row_31"
+  },
+  "output_dir": "outputs/compagas",
+  "output_filename": "BR - Compagas - Planilla Info Publica - Datos Financieros - 2023-2025 - Python - independiente.xlsx"
+}

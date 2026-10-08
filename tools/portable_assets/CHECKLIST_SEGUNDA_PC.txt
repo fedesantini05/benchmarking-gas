@@ -1,0 +1,36 @@
+ACEPTACIÓN EN SEGUNDA COMPUTADORA
+
+Fecha:
+Persona:
+Computadora / Windows:
+Versión de Python:
+Versión de Excel:
+Ubicación de la carpeta extraída:
+
+[ ] El ZIP se extrajo completo y no se ejecutó desde dentro del archivo.
+[ ] Python 3.12 x64 y las dependencias se instalaron sin errores.
+[ ] Las 40 pruebas unitarias pasaron.
+[ ] La reproducción de Ecogas resultó PASS, sin partes diferentes.
+[ ] La reproducción de Efigas resultó PASS, sin partes diferentes.
+[ ] La reproducción de SGC resultó PASS.
+[ ] La reproducción de Potigas resultó PASS.
+[ ] La reproducción de Compagas resultó PASS.
+[ ] Se generaron cinco copias nuevas desde el menú.
+[ ] Ecogas abrió en Excel sin reparación ni errores de fórmulas inesperados.
+[ ] Efigas abrió en Excel sin reparación ni errores de fórmulas inesperados.
+[ ] SGC abrió en Excel sin reparación ni errores de fórmulas inesperados.
+[ ] Potigas abrió en Excel sin reparación ni errores de fórmulas inesperados.
+[ ] Compagas abrió en Excel sin reparación ni errores de fórmulas inesperados.
+[ ] Las fórmulas respondieron a un cambio controlado en una copia de ensayo.
+[ ] Históricos, observaciones y fuentes se conservaron.
+[ ] Se comprendieron las limitaciones de Efigas y no se confundieron blancos con ceros.
+[ ] La persona pudo completar la prueba siguiendo la guía sin usar este chat.
+[ ] Se conservaron outputs/resultado_prueba.json y los informes detallados.
+
+Resultado general: APROBADO / PENDIENTE / FALLÓ
+Errores o dificultades:
+Tiempo requerido:
+Observaciones de usabilidad:
+Acciones antes de ampliar a otras empresas:
+
+No marcar aprobación de otra PC a partir de la evidencia del equipo de preparación.

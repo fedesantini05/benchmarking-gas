@@ -1,0 +1,82 @@
+PAQUETE PILOTO DE BENCHMARKING - 8 DE OCTUBRE DE 2026
+
+Alcance: Ecogas Cuyo, Efigas, Potigas y Compagas, períodos 2023–2025;
+SGC, períodos 2020–2025. Sólo reproduce los casos revisados.
+Metrogas Chile queda fuera de la prueba.
+No busca documentos, no conecta SharePoint ni procesa años nuevos automáticamente.
+No necesita Codex, una cuenta de IA, tokens ni VS Code.
+
+REQUISITOS
+Windows de 64 bits y Python 3.12 de 64 bits, con el launcher py.
+Excel de escritorio para la revisión manual final.
+Se incluyen las dependencias de Python para esta plataforma en wheels.
+La instalación de esas dependencias no necesita Internet.
+Si todavía no hay Python 3.12, instalarlo mediante el canal aprobado por la empresa.
+No desactivar políticas corporativas ni instalar software sin permiso de IT.
+
+PASOS
+1. Copiar el ZIP a la otra computadora y EXTRAER TODO. No ejecutar desde el ZIP.
+2. Conservar toda la carpeta junta. No mover ni editar data, references o config.
+3. Abrir 00_RESUMEN_REUNION.html para el estado del proyecto.
+4. Ejecutar 01_INSTALAR.cmd. Crea un entorno Python nuevo en esta carpeta.
+5. Ejecutar 02_VERIFICAR.cmd. Deben pasar 40 pruebas y las cinco empresas dar PASS.
+   Esto regenera libros temporales desde plantillas y fuentes originales, compara
+   todas las partes internas con los aprobados y conserva informes en outputs.
+   Los libros temporales se eliminan al terminar; los aprobados no se sobrescriben.
+6. Ejecutar 03_ABRIR_MENU.cmd. Elegir empresa y luego "Generar una copia nueva".
+   Repetir para las cinco empresas. Las copias aparecen en outputs/verification/copias.
+7. Abrir las CINCO copias en Excel. No debe aparecer aviso de reparación.
+   Revisar fórmulas, signos, fuentes y notas. En una copia de ensayo, cambiar
+   un componente del período y confirmar que cambia su subtotal dependiente;
+   cerrar sin guardar esa modificación para no contaminar la comparación.
+8. Completar CHECKLIST_SEGUNDA_PC.txt y conservar outputs/resultado_prueba.json.
+
+QUÉ SIGNIFICA PASS
+La reproducción coincide con las planillas aprobadas: cifras, fórmulas, valores
+calculados guardados, formato, otras hojas, notas e históricos.
+No demuestra que se lean correctamente futuros PDF ni sustituye una apertura
+en Excel de escritorio. Efigas sigue teniendo información contable parcial:
+no se inventan desgloses y se mantienen las excepciones aprobadas.
+
+DATOS Y REGLAS
+Ecogas: operandos revisados del informe ORIGINAL de cada año, en miles de ARS
+convertidos a millones con /1000. El piloto no extrae solo cualquier PDF nuevo.
+Efigas: vuelve a leer los tres informes de gestión, en millones COP.
+SGC: lector por etiquetas de seis informes originales, en miles USD /1000.
+Potigas y Compagas: datos revisados asociados a hashes exactos de sus informes;
+no son lectores universales de nuevos PDF. Compagas incluye estimación de pilares
+PMSO 2025 con proporciones históricas 2023/2024, identificada en observaciones.
+Ingresos Efigas incluyen gas y financiación no bancaria. Costos 2024/2025 incluyen
+venta y financiero combinados en fila 16; no se duplican en financiero.
+El glosario se amplía con revisión humana. No hay aprendizaje automático.
+Las filas se interpretan por su significado y la disposición real de cada plantilla.
+
+CARPETAS
+data/templates: plantillas originales, no modificarlas.
+data/reports: 18 PDF fuente, no modificarlos.
+references: cinco planillas de referencia de los casos previos, protegidas mediante hash.
+config/local: rutas relativas ya preparadas, no contienen rutas del usuario original.
+spanish_cases, sgc y legacy: código y controles necesarios para estos cinco casos.
+tests y suites internas: 40 pruebas del paquete; el proyecto completo tenía 53
+pruebas verificadas el 7 de octubre, incluidas otras empresas fuera del paquete.
+wheels: paquetes de instalación para Windows x64 / Python 3.12.
+evidence: resultado de las pruebas del paquete efectuadas en el equipo de preparación.
+outputs: informes y copias nuevas generados en la computadora que hace la prueba.
+
+SI FALLA
+No cambiar importes ni fórmulas para lograr PASS. Guardar el error y los informes.
+Si cambió una fuente/plantilla/referencia, el hash detiene la prueba: revisar el
+archivo y su aprobación, no actualizar el hash automáticamente.
+Si Windows/IT bloquea los archivos, consultar al área responsable.
+Si Python no está en el launcher, IT puede usar Python 3.12 desde una terminal:
+  python -m venv .venv
+  .venv\Scripts\python.exe -m pip install --no-index --find-links wheels -r requirements.txt
+  .venv\Scripts\python.exe verify_all.py
+  .venv\Scripts\python.exe menu.py
+
+USO INTERNO
+El paquete contiene planillas y documentos de trabajo. Compartir sólo con el
+equipo autorizado; no publicar este ZIP completo en un repositorio abierto.
+No contiene claves, conexión a SharePoint ni un entorno Python copiado. Algunos
+módulos/glosarios compartidos conservan términos o reglas de otras empresas,
+pero el menú y los datos sólo habilitan las cinco empresas de esta prueba.

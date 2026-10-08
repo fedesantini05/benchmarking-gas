@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Benchmarking de gas · Avance y prueba portable</title>
+<style>body{font:16px/1.55 Segoe UI,Arial,sans-serif;color:#213247;background:#edf1f5;margin:0}main{max-width:1040px;margin:32px auto;background:white;padding:42px;border-radius:12px}h1{font-size:32px;line-height:1.2;margin:8px 0 16px}h2{font-size:22px;margin-top:30px}small{color:#5a6c80}p{max-width:900px}table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;padding:12px;vertical-align:top;border-bottom:1px solid #dbe2ea}th{background:#233f61;color:white}.note{padding:16px 20px;background:#f2f6fa;border-left:4px solid #3e709b}.warning{border-left-color:#b58a32;background:#fbf7ed}a{color:#245e95}li{margin-bottom:7px}@media(max-width:650px){main{margin:0;padding:22px}table{font-size:13px}th,td{padding:8px}}@media print{body{background:white}main{margin:0;padding:0;max-width:none}h2{break-after:avoid}tr,.note{break-inside:avoid}a{color:inherit}}</style></head>
+<body><main><small>PROYECTO DE BENCHMARKING DE GAS NATURAL · 8 OCTUBRE 2026</small>
+<h1>De planillas revisadas a un proceso reproducible</h1>
+<p>Objetivo: que una persona del equipo pueda generar y verificar planillas con una metodología común, sin llamadas a IA durante la ejecución.</p>
+<div class="note"><strong>Qué se entrega hoy:</strong> paquete independiente para probar Ecogas Cuyo, Efigas, Potigas y Compagas (2023–2025), y SGC (2020–2025). Incluye código, 18 PDF, cinco plantillas de trabajo, cinco planillas de referencia, instalación, menú y controles.</div>
+<h2>Avances comprobados</h2>
+<ul><li>Reglas de fórmulas, signos, clasificación de gastos y trazabilidad aplicadas a los casos revisados.</li>
+<li>Ecogas y Efigas aprobadas por revisión del usuario. Ambas regeneraciones coincidieron en sus 25 partes internas con las versiones aprobadas.</li>
+<li>53 pruebas correctas en el proyecto completo el 7 de octubre. El paquete acotado incluye 40 pruebas, además de cinco regeneraciones integrales.</li>
+<li>Menú local y configuraciones con rutas relativas para trasladar el paquete.</li>
+<li>Control de archivos mediante hashes y protección contra sobrescritura de originales.</li></ul>
+<h2>Qué prueba este paquete y qué no</h2>
+<table><thead><tr><th>Aspecto</th><th>Alcance real</th></tr></thead><tbody>
+<tr><td>Ecogas Cuyo</td><td>Operandos previamente revisados de los PDF originales; generación determinista. No es un extractor autónomo de nuevos PDF.</td></tr>
+<tr><td>Efigas</td><td>Lectura por etiquetas de informes de gestión. Datos parciales y costos de venta/financieros combinados preservados según autorización.</td></tr>
+<tr><td>SGC</td><td>Lector por etiquetas de informes anuales 2020–2025. Excepción puntual de ingresos 2025 restringida al documento revisado.</td></tr>
+<tr><td>Potigas y Compagas</td><td>Mapeos revisados ligados al hash de cada PDF. Compagas utiliza proporciones históricas para estimar los pilares PMSO no desglosados de 2025.</td></tr>
+<tr><td>Glosarios</td><td>Vocabulario revisado de países y empresas. Ampliación supervisada, sin aprendizaje automático.</td></tr>
+<tr><td>Reproducción</td><td>Compara cifras, fórmulas, cachés, estilos, históricos y notas. No certifica por sí sola Excel de escritorio ni nuevos documentos.</td></tr>
+<tr><td>Metrogas Chile</td><td>Separada y en pausa; 2022/2023 pendientes por alcance consolidado/individual. No forma parte de la prueba.</td></tr>
+</tbody></table>
+<h2>Prueba con el equipo</h2>
+<ol><li>Extraer el ZIP en otra computadora Windows x64 con Python 3.12.</li>
+<li>Ejecutar <strong>01_INSTALAR.cmd</strong> y después <strong>02_VERIFICAR.cmd</strong>.</li>
+<li>Abrir <strong>03_ABRIR_MENU.cmd</strong> y generar una copia nueva de cada una de las cinco empresas.</li>
+<li>Abrir las cinco copias en Excel, revisar fórmulas y completar el checklist.</li></ol>
+<p>No requiere VS Code, Codex, cuenta de IA ni tokens. Las dependencias incluidas son para Windows x64 / Python 3.12. El ZIP no incluye Python ni Excel.</p>
+<div class="note warning"><strong>Aceptación pendiente:</strong> que otra persona complete la prueba en otra computadora y Excel abra/recalcule las copias sin reparación. La evidencia del equipo de preparación no sustituye esta aceptación.</div>
+<h2>Hoja de ruta</h2>
+<table><thead><tr><th>Etapa</th><th>Estado / siguiente acción</th></tr></thead><tbody>
+<tr><td>Metodología y casos revisados</td><td>Base implementada; mantener reglas y excepciones versionadas.</td></tr>
+<tr><td>Instalación y uso fuera del chat</td><td>Paquete preparado; falta aceptación por otra persona/PC.</td></tr>
+<tr><td>Unificar históricos</td><td>Pendiente. Propuesta: Ecogas 2022 primero, luego 2016–2021; requiere fuentes originales, extensión del lector y revisión de diferencias.</td></tr>
+<tr><td>Ampliar empresas y años</td><td>Pendiente de nuevos documentos y pruebas. No basta con cambiar el año.</td></tr>
+<tr><td>GitHub privado</td><td>Preparación parcial. Faltan decisión de propiedad/permisos, revisión de derechos y publicación autorizada.</td></tr>
+<tr><td>Fuentes oficiales y SharePoint</td><td>Etapa futura: búsqueda, descarga, permisos y guardado/versionado corporativo.</td></tr>
+</tbody></table>
+<h2>Decisiones para la reunión</h2>
+<ul><li>Elegir una persona y computadora para la prueba de aceptación.</li>
+<li>Confirmar con IT cómo instalar Python y ejecutar herramientas locales.</li>
+<li>Definir carpeta interna de distribución y responsable de las reglas contables.</li>
+<li>Acordar si el siguiente piloto será Ecogas 2022 para homogeneizar históricos.</li></ul>
+<p><a href="LEER_PRIMERO.txt">Guía completa</a> · <a href="CHECKLIST_SEGUNDA_PC.txt">Checklist de aceptación</a></p>
+<small>Uso interno. No publicar el paquete completo: incluye planillas y documentación de trabajo.</small>
+</main></body></html>

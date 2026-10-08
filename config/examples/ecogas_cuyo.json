@@ -1,0 +1,10 @@
+{
+  "template": "data/templates/AR - Ecogas Cuyo - Planilla Info Pública - Datos Financieros.xlsx",
+  "reports": {
+    "2023": "data/reports/ecogas_cuyo/Ecogas Cuyo - Informe Contable - 2023.pdf",
+    "2024": "data/reports/ecogas_cuyo/Ecogas Cuyo - Informe Contable - 2024.pdf",
+    "2025": "data/reports/ecogas_cuyo/Ecogas Cuyo - Informe Contable - 2025.pdf"
+  },
+  "output_dir": "outputs/Ecogas Cuyo",
+  "output_filename": "AR - Ecogas Cuyo - Datos Financieros - 2023-2025.xlsx"
+}

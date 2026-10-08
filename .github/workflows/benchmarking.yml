@@ -1,0 +1,78 @@
+name: Procesar benchmarking
+on:
+  workflow_dispatch:
+    inputs:
+      empresas:
+        description: 'todas o códigos separados por coma: ecogas_cuyo, efigas, sgc, potigas, compagas'
+        required: true
+        default: todas
+        type: string
+      accion:
+        description: 'Generar Excel y controles, o sólo verificar casos aprobados'
+        required: true
+        default: verificar
+        type: choice
+        options:
+          - verificar
+          - generar
+permissions:
+  contents: read
+concurrency:
+  group: benchmarking-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  process:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - name: Exigir repositorio privado
+        shell: pwsh
+        env:
+          REPO_PRIVATE: ${{ github.event.repository.private }}
+          BRANCH: ${{ github.ref_name }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          if ($env:REPO_PRIVATE -ne 'true') { throw 'Sólo repositorio privado autorizado' }
+          if ($env:BRANCH -ne $env:DEFAULT_BRANCH) { throw 'Ejecutar sólo desde la rama predeterminada revisada' }
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-cloud.txt
+      - name: Instalar dependencias
+        run: python -m pip install -r requirements-cloud.txt
+      - name: Probar reglas
+        run: python run_tests.py
+      - name: Obtener datos aprobados, nunca código del ZIP
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          DATA_TAG: ${{ vars.BENCHMARK_DATA_TAG }}
+          DATA_ASSET: ${{ vars.BENCHMARK_DATA_ASSET }}
+          DATA_SHA: ${{ vars.BENCHMARK_DATA_SHA256 }}
+        run: |
+          if (!$env:DATA_TAG -or !$env:DATA_ASSET -or $env:DATA_SHA -notmatch '^[a-fA-F0-9]{64}$') { throw 'Falta configurar paquete de datos aprobado' }
+          if ($env:DATA_TAG -notmatch '^[A-Za-z0-9._-]+$' -or $env:DATA_ASSET -notmatch '^[A-Za-z0-9._-]+[.]zip$') { throw 'Nombre de paquete inválido' }
+          New-Item -ItemType Directory -Path incoming | Out-Null
+          gh release download $env:DATA_TAG --repo $env:GH_REPO --pattern $env:DATA_ASSET --dir incoming
+          if ($LASTEXITCODE -ne 0) { throw 'No se pudo obtener el paquete privado' }
+      - name: Procesar empresas habilitadas
+        shell: pwsh
+        env:
+          COMPANIES: ${{ inputs.empresas }}
+          MODE: ${{ inputs.accion }}
+          DATA_ASSET: ${{ vars.BENCHMARK_DATA_ASSET }}
+          DATA_SHA: ${{ vars.BENCHMARK_DATA_SHA256 }}
+        run: python cloud/run_batch.py --companies "$env:COMPANIES" --mode "$env:MODE" --archive "incoming/$env:DATA_ASSET" --sha256 "$env:DATA_SHA" --output outputs/github
+      - name: Entregar resultados y controles, incluso si falla un caso
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: benchmarking-${{ github.run_id }}
+          path: outputs/github/
+          if-no-files-found: warn
+          retention-days: 7

@@ -1,0 +1,43 @@
+{
+  "version": "1.1",
+  "status": "REVIEWED_PILOT_VOCABULARY",
+  "note": "Vocabulario documentado en los pilotos; no autoriza clasificar automáticamente cualquier PDF ni reasignar aperturas combinadas.",
+  "Argentina": {
+    "gas_revenue": ["Ventas de transporte y distribución de gas"],
+    "gas_cost": ["Compras de gas", "Transporte de gas"],
+    "materials": ["Existencia de materiales al inicio del ejercicio", "Compras de materiales", "Existencia de materiales al cierre del ejercicio"],
+    "personnel": ["Remuneraciones y cargas sociales"],
+    "services": ["Honorarios por servicios profesionales", "Servicios y suministros de terceros", "Convenios de atención comercial y técnica"],
+    "taxes": ["Impuestos, tasas y contribuciones", "Impuesto a los Ingresos Brutos"],
+    "regulator_fee": ["Tasa ENARGAS"],
+    "bad_debt": ["Deudores incobrables"],
+    "inflation_result": ["RECPAM", "Resultado por exposición al cambio en el poder adquisitivo de la moneda"],
+    "excluded_capitalized_cost": ["Activación de Gastos"],
+    "income_reversal": ["Recupero de provisiones", "Recuperos de cuentas por pagar comerciales y otras cuentas por pagar"]
+  },
+  "Colombia": {
+    "income": ["Ingresos operacionales"],
+    "sale_cost": ["Costo de venta"],
+    "operating_expenses": ["Gastos operacionales"],
+    "pretax": ["Utilidad antes de impuestos"],
+    "income_tax": ["Impuesto de renta"],
+    "net_income": ["Utilidad neta"],
+    "current_assets": ["Activos corrientes"],
+    "noncurrent_assets": ["Activos no corrientes"],
+    "assets": ["Total activos"],
+    "current_liabilities": ["Pasivos corrientes"],
+    "noncurrent_liabilities": ["Pasivos no corrientes"],
+    "liabilities": ["Total pasivos"],
+    "equity": ["Total patrimonio"]
+  },
+  "Chile": {
+    "personnel": ["Gastos de personal", "Sueldos y salarios", "Beneficios por terminación"],
+    "functional_unseparated_cost": ["Gastos de administración", "Gastos de operación y mantenimiento", "Costos de mercadotecnia", "Otros gastos varios de operación"],
+    "bad_debt": ["Deterioro de cuentas por cobrar"],
+    "income_reversal": ["Reverso Provisión Contingencia"],
+    "financial_result": ["Diferencias de cambio", "Resultados por unidades de reajustes"],
+    "debt": ["Préstamos bancarios", "Obligaciones con el público (bonos)"],
+    "not_borrowing": ["Pasivos de cobertura", "Pasivos por arrendamientos"],
+    "da": ["Depreciación", "Amortización", "Amortización derechos de uso"]
+  }
+}

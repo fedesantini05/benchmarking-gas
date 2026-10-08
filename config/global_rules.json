@@ -1,0 +1,41 @@
+{
+  "version": "1.1",
+  "signs": {
+    "expenses": "negative",
+    "positive_reversals": "other_operating_income"
+  },
+  "other_expenses": {
+    "maximize_supported_breakdown": true,
+    "rows": {
+      "36": "other_non_distribution_expenses",
+      "37": "taxes_and_fees",
+      "38": "regulatory_fee",
+      "39": "technical_operator_fee",
+      "40": "extraordinary_expenses",
+      "41": "bad_debt_provisions",
+      "42": "interest_on_own_capital"
+    }
+  },
+  "pmso": {
+    "pillar_rows": [19, 23, 27, 31],
+    "estimation": {
+      "enabled_when_source_breakdown_missing": true,
+      "method": "historical_share_residual_distribution",
+      "lookback_periods": 3,
+      "preserve_period_total": true,
+      "require_traceable_formula": true,
+      "status": "ESTIMATED"
+    }
+  },
+  "observations_and_sources": {
+    "include_every_loaded_period": true,
+    "identify_estimates": true,
+    "include_report_note_and_page": true
+  },
+  "balance_formulas": {
+    "26": "row_27-row_28",
+    "27": "row_3-row_4",
+    "28": "row_11-row_13",
+    "29": "row_30-row_31"
+  }
+}

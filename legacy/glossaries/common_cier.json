@@ -1,0 +1,65 @@
+{
+  "version": "1.0",
+  "concepts": {
+    "revenue_gas": {
+      "cier_row": 3,
+      "aliases": ["ventas de gas", "venta de gas", "ingresos por distribucion de gas", "receita de distribuicao de gas", "receita bruta de gas"]
+    },
+    "other_operating_income": {
+      "cier_row": 13,
+      "aliases": ["otros ingresos operativos", "otros ingresos operacionales", "outros resultados operacionais", "outras receitas operacionais"]
+    },
+    "gas_cost": {
+      "cier_row": 16,
+      "aliases": ["compras de gas", "costo de gas", "custos do gas", "gas natural e transporte", "custo do gas vendido"]
+    },
+    "personnel": {
+      "cier_row": 19,
+      "aliases": ["retribuciones personales", "cargas sociales", "gastos de personal", "pessoal", "encargos sociais"]
+    },
+    "materials": {
+      "cier_row": 23,
+      "aliases": ["materiales y suministros", "materiais", "materiais e suprimentos"]
+    },
+    "third_party_services": {
+      "cier_row": 27,
+      "aliases": ["servicios contratados", "servicios de terceros", "servicos de terceiros", "servicos contratados"]
+    },
+    "other_pmso": {
+      "cier_row": 31,
+      "aliases": ["otros gastos", "outros custos", "outras despesas"]
+    },
+    "taxes_fees": {
+      "cier_row": 37,
+      "aliases": ["tributos y tasas", "impuestos", "tributos", "taxas"]
+    },
+    "regulatory_fee": {
+      "cier_row": 38,
+      "aliases": ["tasa de regulacion", "taxa de regulacao", "taxa de fiscalizacao"]
+    },
+    "technical_operator_fee": {
+      "cier_row": 39,
+      "aliases": ["fee operador tecnico", "canon miem", "operador tecnico"]
+    },
+    "bad_debt": {
+      "cier_row": 41,
+      "aliases": ["deudores incobrables", "provisiones incobrables", "perdas de credito", "creditos de liquidacao duvidosa"]
+    },
+    "depreciation_amortization": {
+      "cier_row": 44,
+      "aliases": ["depreciaciones y amortizaciones", "amortizaciones y depreciaciones", "depreciacao e amortizacao"]
+    },
+    "financial_income": {
+      "cier_row": 47,
+      "aliases": ["ingresos financieros", "receitas financeiras"]
+    },
+    "financial_expense": {
+      "cier_row": 48,
+      "aliases": ["gastos financieros", "costos financieros", "despesas financeiras"]
+    },
+    "income_tax": {
+      "cier_row": 52,
+      "aliases": ["impuesto a la renta", "imposto de renda", "contribuicao social"]
+    }
+  }
+}

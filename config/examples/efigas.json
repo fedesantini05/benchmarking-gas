@@ -1,0 +1,11 @@
+{
+  "template": "data/templates/CO - Efigas - Planilla Info Pública - Datos Financieros.xlsx",
+  "reports": {
+    "2023": "data/reports/efigas/Efigas - informe contable - 2023.pdf",
+    "2024": "data/reports/efigas/Efigas - informe contable - 2024.pdf",
+    "2025": "data/reports/efigas/Efigas - informe contable - 2025.pdf"
+  },
+  "output_dir": "outputs/Efigas",
+  "output_filename": "CO - Efigas - Datos Financieros - 2023-2025 - TRAZABILIDAD.xlsx",
+  "missing_policy": "PUBLISHED_TOTALS_WHEN_NO_BREAKDOWN"
+}

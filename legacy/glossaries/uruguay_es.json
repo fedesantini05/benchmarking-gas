@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "country": "Uruguay",
+  "language": "es",
+  "entity_aliases": ["Conecta S.A.", "Conecta SA"],
+  "terms": {
+    "cash": ["efectivo y equivalentes de efectivo", "disponibilidades"],
+    "trade_receivables": ["deudores comerciales y otras cuentas por cobrar"],
+    "inventory": ["inventarios"],
+    "ppe": ["propiedades, planta y equipo"],
+    "intangibles": ["activos intangibles"],
+    "current_liabilities": ["acreedores comerciales y otras cuentas por pagar"],
+    "gas_purchase": ["compras de gas"],
+    "technical_operator_fee": ["canon miem"],
+    "personnel": ["retribuciones personales y cargas sociales"],
+    "professional_fees": ["honorarios profesionales"],
+    "contracted_services": ["servicios contratados"],
+    "transport": ["locomocion y transporte"],
+    "bad_debt": ["deudores incobrables"],
+    "financial_result": ["resultados financieros"]
+  }
+}

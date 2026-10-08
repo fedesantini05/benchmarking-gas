@@ -1,0 +1,24 @@
+{
+  "version": "1.0",
+  "country": "Estados Unidos",
+  "language": "en",
+  "entity_aliases": ["Southwest Gas Corporation", "Southwest Gas Corporation and Subsidiaries", "Southwest Gas"],
+  "terms": {
+    "gas_revenue": ["gas operating revenues"],
+    "gas_cost": ["net cost of gas sold"],
+    "operations_maintenance": ["operations and maintenance"],
+    "depreciation_amortization": ["depreciation and amortization"],
+    "taxes_fees": ["taxes other than income taxes"],
+    "financial_expense": ["net interest deductions", "other income (deductions)"],
+    "income_tax": ["income tax expense"],
+    "cash": ["cash and cash equivalents"],
+    "trade_receivables": ["accounts receivable, net of allowance"],
+    "current_assets": ["total current assets"],
+    "current_liabilities": ["total current liabilities"],
+    "short_debt": ["current maturities of long-term debt", "short-term debt"],
+    "long_debt": ["long-term debt, less current maturities"],
+    "distribution_assets": ["gas plant", "construction work in progress", "net utility plant"],
+    "equity": ["total equity"],
+    "shares": ["common stock shares"]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "version": "1.1",
+  "country": "Brasil",
+  "language": "pt",
+  "entity_aliases": [
+    "Companhia Paranaense de Gas",
+    "COMPAGAS",
+    "Compagas",
+    "Companhia Potiguar de Gas",
+    "POTIGAS",
+    "Potigas"
+  ],
+  "terms": {
+    "cash": ["caixa e equivalentes de caixa"],
+    "trade_receivables": ["contas a receber de clientes", "clientes"],
+    "current_assets": ["ativo circulante"],
+    "current_liabilities": ["passivo circulante"],
+    "loans": ["emprestimos", "financiamentos", "debentures"],
+    "intangibles": ["ativo intangivel", "intangivel"],
+    "gas_revenue": ["receita de distribuicao de gas", "receita bruta de gas"],
+    "gas_cost": ["gas natural e transporte", "custo do gas"],
+    "personnel": ["pessoal e encargos sociais", "despesas com pessoal"],
+    "materials": ["materiais"],
+    "third_party_services": ["servicos de terceiros", "servicos contratados"],
+    "financial_income": ["receitas financeiras"],
+    "financial_expense": ["despesas financeiras"],
+    "income_tax": ["imposto de renda", "contribuicao social"],
+    "construction_revenue": ["receita de construcao", "receita do servico de construcao"],
+    "construction_cost": ["custo de construcao", "custos do servico de construcao"],
+    "other_operating_income": ["outras receitas operacionais", "reversao de contingencias", "receitas de penalidades contratuais"],
+    "bad_debt_provision": ["provisao de creditos de liquidacao duvidosa", "pcld"],
+    "tax_expense": ["despesas tributarias", "tributos e taxas fiscais"],
+    "concession_assets": ["intangivel concessao", "rede de distribuicao"]
+  }
+}

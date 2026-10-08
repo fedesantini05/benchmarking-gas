@@ -1,0 +1,377 @@
+{
+  "year": 2021,
+  "path": "data/sgc/Southwest Gas Corporation - informe contable - 2021.pdf",
+  "sha256": "1c63a6fe506821bdf841c5c388d9852c5d5f686b62fb5ab768ae87464852fd59",
+  "unit": "thousands_USD",
+  "facts": {
+    "gas_operating_revenue": {
+      "value": 1521790.0,
+      "page": 52,
+      "label": "Gas operating revenues",
+      "source_line": "Gas operating revenues $1,521,790 $1,350,585 $1,368,939",
+      "status": "PUBLISHED"
+    },
+    "gas_cost": {
+      "value": 430907.0,
+      "page": 52,
+      "label": "Net cost of gas sold",
+      "source_line": "Net cost of gas sold 430,907 342,837 385,164",
+      "status": "PUBLISHED"
+    },
+    "operations_maintenance": {
+      "value": 438550.0,
+      "page": 52,
+      "label": "Operations and maintenance",
+      "source_line": "Operations and maintenance 438,550 406,382 422,174",
+      "status": "PUBLISHED"
+    },
+    "da": {
+      "value": 253398.0,
+      "page": 52,
+      "label": "Depreciation and amortization",
+      "source_line": "Depreciation and amortization 253,398 235,295 215,620",
+      "status": "PUBLISHED"
+    },
+    "taxes_other_income": {
+      "value": 80343.0,
+      "page": 52,
+      "label": "Taxes other than income taxes",
+      "source_line": "Taxes other than income taxes 80,343 63,460 62,328",
+      "status": "PUBLISHED"
+    },
+    "interest_deductions": {
+      "value": 97560.0,
+      "page": 52,
+      "label": "Net interest deductions",
+      "source_line": "Net interest deductions (97,560) (101,148) (95,026)",
+      "status": "PUBLISHED",
+      "raw_value": -97560.0
+    },
+    "other_income_deductions": {
+      "value": -4559.0,
+      "page": 52,
+      "label": "Other income (deductions)",
+      "source_line": "Other income (deductions) (4,559) (6,590) 9,517",
+      "status": "PUBLISHED"
+    },
+    "income_tax": {
+      "value": 29338.0,
+      "page": 52,
+      "label": "Income tax expense",
+      "source_line": "Income tax expense 29,338 35,755 34,973",
+      "status": "PUBLISHED"
+    },
+    "net_income": {
+      "value": 187135.0,
+      "page": 52,
+      "label": "Net income",
+      "source_line": "Net income $ 187,135 $ 159,118 $ 163,171",
+      "status": "PUBLISHED"
+    },
+    "operating_income": {
+      "value": 318592.0,
+      "page": 52,
+      "label": "Operating income",
+      "source_line": "Operating income 318,592 302,611 283,653",
+      "status": "PUBLISHED"
+    },
+    "pretax": {
+      "value": 216473.0,
+      "page": 52,
+      "label": "Income before income taxes",
+      "source_line": "Income before income taxes 216,473 194,873 198,144",
+      "status": "PUBLISHED"
+    },
+    "gas_plant_gross": {
+      "value": 8901575.0,
+      "page": 50,
+      "label": "Gas plant",
+      "source_line": "Gas plant $ 8,901,575 $ 8,384,000",
+      "status": "PUBLISHED"
+    },
+    "accumulated_depreciation": {
+      "value": 2538508.0,
+      "page": 50,
+      "label": "Less: accumulated depreciation",
+      "source_line": "Less: accumulated depreciation (2,538,508) (2,419,348)",
+      "status": "PUBLISHED",
+      "raw_value": -2538508.0
+    },
+    "construction_work_progress": {
+      "value": 183485.0,
+      "page": 50,
+      "label": "Construction work in progress",
+      "source_line": "Construction work in progress 183,485 211,429",
+      "status": "PUBLISHED"
+    },
+    "net_utility_plant": {
+      "value": 6546552.0,
+      "page": 50,
+      "label": "Net regulated operations plant",
+      "source_line": "Net regulated operations plant 6,546,552 6,176,081",
+      "status": "PUBLISHED"
+    },
+    "other_property_investments": {
+      "value": 153093.0,
+      "page": 50,
+      "label": "Other property and investments",
+      "source_line": "Other property and investments 153,093 143,611",
+      "status": "PUBLISHED"
+    },
+    "cash": {
+      "value": 38691.0,
+      "page": 50,
+      "label": "Cash and cash equivalents",
+      "source_line": "Cash and cash equivalents 38,691 41,070",
+      "status": "PUBLISHED"
+    },
+    "receivables": {
+      "value": 169666.0,
+      "page": 50,
+      "label": "Accounts receivable, net of allowance",
+      "source_line": "Accounts receivable, net of allowance 169,666 146,861",
+      "status": "PUBLISHED"
+    },
+    "accrued_utility_revenue": {
+      "value": 84900.0,
+      "page": 50,
+      "label": "Accrued utility revenue",
+      "source_line": "Accrued utility revenue 84,900 82,400",
+      "status": "PUBLISHED"
+    },
+    "income_tax_receivable": {
+      "value": 7826.0,
+      "page": 50,
+      "label": "Income taxes receivable, net",
+      "source_line": "Income taxes receivable, net 7,826 11,155",
+      "status": "PUBLISHED"
+    },
+    "deferred_gas_cost_asset": {
+      "value": 291145.0,
+      "page": 50,
+      "label": "Deferred purchased gas costs",
+      "source_line": "Deferred purchased gas costs 291,145 2,053",
+      "status": "PUBLISHED"
+    },
+    "receivable_parent": {
+      "value": 1031.0,
+      "page": 50,
+      "label": "Receivable from parent",
+      "source_line": "Receivable from parent 1,031 —",
+      "status": "PUBLISHED"
+    },
+    "inventory": {
+      "value": null,
+      "status": "MISSING",
+      "candidates": []
+    },
+    "prepaid_other_current": {
+      "value": 242243.0,
+      "page": 50,
+      "label": "Prepaid and other current assets",
+      "source_line": "Prepaid and other current assets 242,243 152,748",
+      "status": "PUBLISHED"
+    },
+    "held_for_sale": {
+      "value": null,
+      "status": "MISSING",
+      "candidates": []
+    },
+    "current_assets": {
+      "value": 835502.0,
+      "page": 50,
+      "label": "Total current assets",
+      "source_line": "Total current assets 835,502 436,287",
+      "status": "PUBLISHED"
+    },
+    "goodwill": {
+      "value": 10095.0,
+      "page": 50,
+      "label": "Goodwill",
+      "source_line": "Goodwill 10,095 10,095",
+      "status": "PUBLISHED"
+    },
+    "deferred_other_assets": {
+      "value": 405021.0,
+      "page": 50,
+      "label": "Deferred charges and other assets",
+      "source_line": "Deferred charges and other assets 405,021 490,562",
+      "status": "PUBLISHED"
+    },
+    "assets": {
+      "value": 7950263.0,
+      "page": 50,
+      "label": "Total assets",
+      "source_line": "Total assets $ 7,950,263 $ 7,256,636",
+      "status": "PUBLISHED"
+    },
+    "equity": {
+      "value": 2527937.0,
+      "page": 51,
+      "label": "Total equity",
+      "source_line": "Total equity 2,527,937 2,233,468",
+      "status": "PUBLISHED"
+    },
+    "current_debt_maturities": {
+      "value": 275000.0,
+      "page": 51,
+      "label": "Current maturities of long-term debt",
+      "source_line": "Current maturities of long-term debt 275,000 —",
+      "status": "PUBLISHED"
+    },
+    "short_debt": {
+      "value": 250000.0,
+      "page": 51,
+      "label": "Short-term debt",
+      "source_line": "Short-term debt 250,000 57,000",
+      "status": "PUBLISHED"
+    },
+    "suppliers": {
+      "value": 234070.0,
+      "page": 51,
+      "label": "Accounts payable",
+      "source_line": "Accounts payable 234,070 161,646",
+      "status": "PUBLISHED"
+    },
+    "customer_deposits": {
+      "value": 56127.0,
+      "page": 51,
+      "label": "Customer deposits",
+      "source_line": "Customer deposits 56,127 67,920",
+      "status": "PUBLISHED"
+    },
+    "accrued_taxes": {
+      "value": 53064.0,
+      "page": 51,
+      "label": "Accrued general taxes",
+      "source_line": "Accrued general taxes 53,064 48,640",
+      "status": "PUBLISHED"
+    },
+    "accrued_interest": {
+      "value": 22926.0,
+      "page": 51,
+      "label": "Accrued interest",
+      "source_line": "Accrued interest 22,926 20,495",
+      "status": "PUBLISHED"
+    },
+    "deferred_gas_cost_liability": {
+      "value": 0,
+      "page": 51,
+      "label": "Deferred purchased gas costs",
+      "source_line": "Deferred purchased gas costs — 54,636",
+      "status": "PUBLISHED"
+    },
+    "payable_parent": {
+      "value": 0,
+      "page": 51,
+      "label": "Payable to parent",
+      "source_line": "Payable to parent — 142",
+      "status": "PUBLISHED"
+    },
+    "dividends_declared": {
+      "value": null,
+      "status": "MISSING",
+      "candidates": []
+    },
+    "other_current_liabilities": {
+      "value": 146422.0,
+      "page": 51,
+      "label": "Other current liabilities",
+      "source_line": "Other current liabilities 146,422 146,046",
+      "status": "PUBLISHED"
+    },
+    "current_liabilities": {
+      "value": 1037609.0,
+      "page": 51,
+      "label": "Total current liabilities",
+      "source_line": "Total current liabilities 1,037,609 556,525",
+      "status": "PUBLISHED"
+    },
+    "long_debt": {
+      "value": 2440603.0,
+      "page": 51,
+      "label": "Long-term debt, less current maturities",
+      "source_line": "Long-term debt, less current maturities 2,440,603 2,438,206",
+      "status": "PUBLISHED"
+    },
+    "deferred_tax_credits": {
+      "value": 638828.0,
+      "page": 51,
+      "label": "Deferred income taxes and investment tax credits, net",
+      "source_line": "Deferred income taxes and investment tax credits, net 638,828 581,100",
+      "status": "PUBLISHED"
+    },
+    "removal_costs": {
+      "value": 424000.0,
+      "page": 51,
+      "label": "Accumulated removal costs",
+      "source_line": "Accumulated removal costs 424,000 404,000",
+      "status": "PUBLISHED"
+    },
+    "other_long_liabilities": {
+      "value": 881286.0,
+      "page": 51,
+      "label": "Other deferred credits and other long-term liabilities",
+      "source_line": "Other deferred credits and other long-term liabilities 881,286 1,043,337",
+      "status": "PUBLISHED"
+    },
+    "residential": {
+      "value": 1035612.0,
+      "page": 73,
+      "label": "Residential",
+      "source_line": "Residential $1,035,612 $ 958,520 $ 972,788",
+      "status": "PUBLISHED"
+    },
+    "small_commercial": {
+      "value": 270214.0,
+      "page": 73,
+      "label": "Small commercial",
+      "source_line": "Small commercial 270,214 221,541 249,117",
+      "status": "PUBLISHED"
+    },
+    "large_commercial": {
+      "value": 57371.0,
+      "page": 73,
+      "label": "Large commercial",
+      "source_line": "Large commercial 57,371 44,633 48,935",
+      "status": "PUBLISHED"
+    },
+    "industrial_other": {
+      "value": 42313.0,
+      "page": 73,
+      "label": "Industrial/other",
+      "source_line": "Industrial/other 42,313 26,242 22,074",
+      "status": "PUBLISHED"
+    },
+    "transportation": {
+      "value": 92240.0,
+      "page": 73,
+      "label": "Transportation",
+      "source_line": "Transportation 92,240 88,215 92,380",
+      "status": "PUBLISHED"
+    },
+    "alternative_revenue": {
+      "value": 13181.0,
+      "page": 73,
+      "label": "Alternative revenue program deferrals",
+      "source_line": "Alternative revenue program deferrals 13,181 12,140 (25,112)",
+      "status": "PUBLISHED"
+    },
+    "other_revenue": {
+      "value": 10859.0,
+      "page": 73,
+      "label": "Other revenues (a)",
+      "source_line": "Other revenues (a) 10,859 (706) 8,757",
+      "status": "PUBLISHED"
+    },
+    "shares_thousand": {
+      "value": 47482.0,
+      "page": 56,
+      "label": "Beginning and ending balances",
+      "source_line": "Beginning and ending balances 47,482 47,482 47,482",
+      "status": "PUBLISHED"
+    }
+  },
+  "pages": 128,
+  "engine": "pypdf_regex_no_ai"
+}

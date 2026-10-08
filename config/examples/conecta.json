@@ -1,0 +1,31 @@
+{
+  "company": "Conecta S.A.",
+  "country": "Uruguay",
+  "years": [
+    2023,
+    2024,
+    2025
+  ],
+  "template": "data/conecta/plantilla.xlsx",
+  "reports": {
+    "2023": "data/conecta/Conecta S.A. - informe contable - 2023.pdf",
+    "2024": "data/conecta/Conecta S.A. - informe contable - 2024.pdf",
+    "2025": "data/conecta/Conecta S.A. - informe contable - 2025.pdf"
+  },
+  "period_columns": {
+    "2023": "K",
+    "2024": "L",
+    "2025": "M"
+  },
+  "policies": {
+    "transport_classification": "materials_and_supplies",
+    "transport_classification_basis": "continuity_with_user-reviewed_Conecta_mapping",
+    "miem_canon_row": 39,
+    "ursea_canon_row": 38,
+    "equity_has_business_goodwill_reserve": false,
+    "working_capital_formula": "row_26=row_27-row_28",
+    "fixed_assets_formula": "row_29=row_30-row_31"
+  },
+  "output_dir": "outputs/conecta",
+  "output_filename": "UR - Conecta - Planilla Info Publica - Datos Financieros - 2023-2025 - Python - corregida.xlsx"
+}

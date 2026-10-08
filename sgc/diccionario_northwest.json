@@ -1,0 +1,16 @@
+{
+  "entity": "NORTHWEST NATURAL GAS COMPANY",
+  "status": "EXTRACTION_TEST_ONLY",
+  "income_aliases": {
+    "gas_operating_revenue": "Operating revenues",
+    "gas_cost": "Cost of gas",
+    "da": "Depreciation",
+    "taxes_other_income": "General taxes",
+    "operating_income": "Income from operations",
+    "interest_deductions": "Interest expense, net",
+    "other_income_deductions": "Other income \\(expense\\), net",
+    "environmental": "Environmental remediation",
+    "revenue_taxes": "Revenue taxes",
+    "other_operating_expenses": "Other operating expenses"
+  }
+}
