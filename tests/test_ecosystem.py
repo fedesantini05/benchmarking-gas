@@ -5,7 +5,7 @@ import unittest
 
 from ecosystem.catalog import import_csv,import_roster,load,select
 from ecosystem.jobs import execute
-from ecosystem.sources import candidates,check_url,discover,download
+from ecosystem.sources import candidates,check_url,discover,download,store_document,company_folder,safe_name
 
 
 SOURCE={'url':'https://example.com/reports','hosts':['example.com'],
@@ -92,6 +92,44 @@ class EcosystemTests(unittest.TestCase):
                 download({'url':'https://example.com/a.pdf'},{'sources':[SOURCE]},Path(t),
                          fetcher=lambda *a,**kw:(b'<html>error</html>','https://example.com/a.pdf','utf-8'))
             self.assertEqual(list(Path(t).iterdir()),[])
+
+    def test_readable_filename_and_deduplication(self):
+        with tempfile.TemporaryDirectory() as t:
+            candidate={'candidate_years':[2024],'kind':'management_report','document_variant':'full_or_unknown'}
+            company={'id':'efigas','alias':'Efigas'}
+            first=store_document(b'%PDF-first',candidate,company,Path(t))
+            second=store_document(b'%PDF-first',candidate,company,Path(t))
+            self.assertEqual(first['filename'],'Efigas - Informe de gestion y sostenibilidad - 2024.pdf')
+            self.assertEqual(first,second)
+            self.assertEqual(len(list(Path(t).iterdir())),1)
+
+    def test_different_revision_never_overwrites(self):
+        with tempfile.TemporaryDirectory() as t:
+            candidate={'candidate_years':[2025],'document_variant':'summary'}
+            company={'id':'efigas','alias':'Efigas'}
+            first=store_document(b'%PDF-first',candidate,company,Path(t))
+            second=store_document(b'%PDF-second',candidate,company,Path(t))
+            self.assertTrue(second['filename'].endswith(' - version 2.pdf'))
+            self.assertEqual(Path(first['local_path']).read_bytes(),b'%PDF-first')
+            self.assertEqual(store_document(b'%PDF-second',candidate,company,Path(t)),second)
+
+    def test_safe_folder_name(self):
+        self.assertEqual(company_folder({'alias':'Efigas','id':'efigas'}),'Efigas')
+        for value in ('../../Other','CON','a\\b','a/b','a:b','name. '):
+            self.assertNotIn('/',safe_name(value)); self.assertNotIn('\\',safe_name(value))
+            self.assertFalse(safe_name(value).endswith(('.', ' ')))
+
+    def test_downloads_under_outputs_company_not_execution(self):
+        with tempfile.TemporaryDirectory() as t:
+            storage=Path(t)/'outputs/platform'
+            company={'id':'efigas','alias':'Efigas'}
+            received=[]
+            def downloader(candidate,company,destination):
+                received.append(destination); return {'status':'DOWNLOADED_PENDING_REVIEW'}
+            execute({'companies':[company]},
+                {'companies':['efigas'],'years':[2024],'action':'discover','download':True},storage,
+                discoverer=lambda *args:{'company':'efigas','status':'CANDIDATES_FOUND','candidates':[{}]},downloader=downloader)
+            self.assertEqual(received,[Path(t)/'outputs/Efigas'])
 
     def test_new_year_does_not_call_generator(self):
         called=[]

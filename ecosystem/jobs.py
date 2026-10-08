@@ -5,7 +5,7 @@ from pathlib import Path
 import uuid
 
 from cloud.run_batch import run as generate_batch
-from ecosystem.sources import discover,download
+from ecosystem.sources import discover,download,company_folder
 
 
 def now(): return datetime.now(timezone.utc).isoformat()
@@ -30,12 +30,14 @@ def execute(catalog,request,storage,data_root=None,discoverer=discover,downloade
             if action=='discover':
                 item=discoverer(company,years)
                 if request.get('download'):
-                    downloads=folder/identity; downloads.mkdir()
+                    downloads=Path(storage).resolve().parent/company_folder(company)
+                    downloads.mkdir(parents=True,exist_ok=True)
                     records=[]
                     for candidate in item['candidates'][:10]:
                         try: records.append(downloader(candidate,company,downloads))
                         except Exception as error: records.append(dict(candidate,status='DOWNLOAD_ERROR',error=str(error)))
                     item['downloads']=records
+                    item['download_directory']=str(downloads)
                     item['download_limit']=10
             elif set(years)!=set(company.get('reviewed_years',[])):
                 item={'company':identity,'status':'REVIEW_REQUIRED',

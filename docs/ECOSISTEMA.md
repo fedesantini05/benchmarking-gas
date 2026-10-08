@@ -48,8 +48,14 @@ Entrar a `http://127.0.0.1:8765`. Elegir filtros, empresas y años, luego
 Las fuentes configuradas se limitan a Compagas y Efigas. Un enlace encontrado
 es CANDIDATO: el año en título/URL podría ser publicación o comparativo, no el
 ejercicio que necesitamos. No se aprueba ni se actualizan hashes automáticamente.
-Los PDFs se guardan en `outputs/platform/ID_EMPRESA_DE_EJECUCION/` dentro de
-la carpeta identificada por cada ejecución. Ver `job.json` para ubicación y hash.
+Los PDFs se guardan directamente en `outputs/NOMBRE_EMPRESA/`, por ejemplo
+`outputs/Efigas/Efigas - Informe de gestion y sostenibilidad - 2024.pdf`.
+Los resúmenes llevan `Resumen ejecutivo` en el nombre. Los años son candidatos
+pendientes de confirmar dentro del documento. El hash sigue en el control,
+no en el nombre del archivo. Repetir un archivo idéntico reutiliza la copia;
+si el contenido cambió se conserva como `version 2`, sin sobrescribir.
+El historial y los controles siguen en `outputs/platform/ID_EJECUCION/job.json`,
+que incluye carpeta de descarga y ruta local de cada PDF.
 
 Para generar los casos revisados, indicar el directorio del paquete local de
 datos autorizado (contiene `config/local`, `data` y `references`):

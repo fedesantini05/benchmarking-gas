@@ -94,12 +94,48 @@ def discover(company,years,fetcher=fetch):
             'note':'Año del enlace/contexto es candidato; no confirma período, entidad ni estados individuales.'}
 
 
+def safe_name(value):
+    """Human-readable Windows component, never a path supplied by a document."""
+    value=re.sub(r'[<>:"/\\|?*\x00-\x1f]','-',str(value))
+    value=' '.join(value.split()).strip(' .')[:90].rstrip(' .') or 'Empresa'
+    if value.split('.')[0].upper() in {'CON','PRN','AUX','NUL',*(f'COM{i}' for i in range(1,10)),*(f'LPT{i}' for i in range(1,10))}:
+        value='Empresa - '+value
+    return value
+
+
+def company_folder(company):
+    return safe_name(company.get('alias') or company.get('id','Empresa').replace('_',' ').title())
+
+
+def store_document(content,candidate,company,destination):
+    """Reuse identical bytes; retain distinct revisions under numbered names."""
+    if not content.startswith(b'%PDF-'): raise ValueError('La descarga no tiene cabecera PDF')
+    destination=destination.resolve(); destination.mkdir(parents=True,exist_ok=True)
+    digest=hashlib.sha256(content).hexdigest()
+    kind='Resumen ejecutivo' if candidate.get('document_variant')=='summary' else (
+        'Informe de gestion y sostenibilidad' if candidate.get('kind')=='management_report' else 'Informe contable')
+    years=candidate.get('candidate_years',[])
+    if any(type(year)!=int or not 1900<=year<=2100 for year in years): raise ValueError('Años candidatos inválidos')
+    period='-'.join(str(y) for y in sorted(set(years))) or 'Periodo por confirmar'
+    stem=f'{company_folder(company)} - {kind} - {period}'
+    revision=1
+    while True:
+        filename=stem+(f' - version {revision}' if revision>1 else '')+'.pdf'
+        path=destination/filename
+        if not path.resolve().is_relative_to(destination): raise ValueError('Destino fuera de la carpeta de la empresa')
+        if path.exists():
+            with path.open('rb') as f: same=hashlib.file_digest(f,'sha256').hexdigest()==digest
+            if same: break
+            revision+=1; continue
+        try:
+            with path.open('xb') as f: f.write(content)
+            break
+        except FileExistsError: continue
+    return {'sha256':digest,'filename':path.name,'local_path':str(path),'bytes':len(content)}
+
+
 def download(candidate,company,destination,fetcher=fetch):
     hosts={h for source in company['sources'] for h in source['hosts']}
     content,url,_=fetcher(candidate['url'],hosts,limit=50*1024*1024)
-    if not content.startswith(b'%PDF-'): raise ValueError('La descarga no tiene cabecera PDF')
-    digest=hashlib.sha256(content).hexdigest(); path=destination/(digest+'.pdf')
-    if not path.exists():
-        with path.open('xb') as f: f.write(content)
-    return dict(candidate,download_url=url,sha256=digest,filename=path.name,
-                bytes=len(content),status='DOWNLOADED_PENDING_REVIEW')
+    stored=store_document(content,candidate,company,destination)
+    return dict(candidate,download_url=url,**stored,status='DOWNLOADED_PENDING_REVIEW')
