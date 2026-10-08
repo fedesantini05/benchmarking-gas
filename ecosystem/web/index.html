@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Benchmarking · piloto local</title>
+<style nonce="__TOKEN__">
+body{font:16px system-ui;background:#f3f5f8;color:#17304a;margin:0}main{max-width:1100px;margin:auto;padding:30px}h1{margin-bottom:8px}.card{background:white;border:1px solid #d5dce5;border-radius:12px;padding:22px;margin:20px 0}.filters{display:flex;gap:12px;flex-wrap:wrap}label{display:grid;gap:5px}input,select,button{font:inherit;padding:9px;border:1px solid #aab8c7;border-radius:6px}button{background:#173f68;color:white;cursor:pointer}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:10px;border-bottom:1px solid #e1e6ee}small{color:#54677b}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eef3f8;padding:15px}.scroll{overflow:auto;max-height:450px}button:disabled{opacity:.5}#status{font-weight:600}
+</style>
+<main><h1>Benchmarking de gas</h1><small>Piloto en esta computadora · sin IA · no conectado a SharePoint</small>
+<div class="card"><h2>1. Elegir empresas</h2><div class="filters">
+<label>País<select id="country"><option value="">Todos</option></select></label>
+<label>Regulador<select id="regulator"><option value="">Todos</option></select></label>
+<label>Integración vertical<select id="vertical"><option value="">Todas</option><option>SI</option><option>NO</option></select></label>
+<label>Empresa<input id="query" placeholder="Buscar por nombre"></label></div>
+<p id="count"></p><button id="select">Seleccionar visibles</button>
+<div class="scroll"><table><thead><tr><th>Elegir</th><th>Empresa</th><th>País</th><th>Disponibilidad</th></tr></thead><tbody id="companies"></tbody></table></div></div>
+<div class="card"><h2>2. Ejecutar</h2><div class="filters">
+<label>Años (separados por coma)<input id="years" value="2023,2024,2025"></label>
+<label>Acción<select id="action"><option value="discover">Buscar documentos oficiales</option><option value="generate">Generar casos revisados con fuentes locales</option></select></label>
+<label>Descargar candidatos localmente<input id="download" type="checkbox"></label></div>
+<p>Los documentos encontrados requieren confirmar entidad, año y alcance. Encontrar un PDF no habilita automáticamente un año nuevo.</p>
+<button id="execute">Ejecutar</button> <span id="status" role="status"></span>
+<pre id="result" hidden></pre></div>
+<div class="card"><h2>Historial local</h2><button id="history">Ver últimas ejecuciones</button><pre id="past" hidden></pre></div>
+</main>
+<script nonce="__TOKEN__">
+const token='__TOKEN__',el=id=>document.getElementById(id);let companies=[];
+const normalized=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+function render(){const shown=companies.filter(c=>(!el('country').value||c.country===el('country').value)&&(!el('regulator').value||c.regulator===el('regulator').value)&&(!el('vertical').value||c.vertical_integration===el('vertical').value)&&normalized(c.name+' '+c.id).includes(normalized(el('query').value)));el('companies').replaceChildren();for(const c of shown){const tr=document.createElement('tr'),td=document.createElement('td'),check=document.createElement('input');check.type='checkbox';check.value=c.id;td.append(check);tr.append(td);for(const text of [c.name,c.country_label||c.country,c.reviewed_years.length?'Caso revisado: '+c.reviewed_years.join(', '):'Incorporación pendiente']){const cell=document.createElement('td');cell.textContent=text;tr.append(cell)}el('companies').append(tr)}el('count').textContent=shown.length+' empresas visibles';}
+async function init(){companies=(await(await fetch('/api/catalog')).json()).companies;for(const [id,key] of [['country','country'],['regulator','regulator']]){for(const value of [...new Set(companies.map(c=>c[key]).filter(Boolean))].sort()){const o=document.createElement('option');o.value=value;o.textContent=value;el(id).append(o)}}render()}
+for(const id of ['country','regulator','vertical','query'])el(id).addEventListener('input',render);
+el('select').onclick=()=>{for(const c of el('companies').querySelectorAll('input'))c.checked=true};
+el('execute').onclick=async()=>{el('execute').disabled=true;el('status').textContent='Procesando…';try{const request={companies:[...el('companies').querySelectorAll('input:checked')].map(c=>c.value),years:el('years').value.split(',').map(s=>Number(s.trim())),action:el('action').value,download:el('download').checked};const response=await fetch('/api/jobs',{method:'POST',headers:{'Content-Type':'application/json','X-Request-Token':token},body:JSON.stringify(request)});const receipt=await response.json();if(!response.ok)throw Error(receipt.error);let result;do{await new Promise(r=>setTimeout(r,2000));result=await(await fetch('/api/tickets/'+receipt.ticket)).json()}while(result.status==='RUNNING');el('result').hidden=false;el('result').textContent=JSON.stringify(result,null,2);el('status').textContent=result.status==='COMPLETED'?'Completado':'Consultar observaciones';}catch(error){el('status').textContent=error.message}finally{el('execute').disabled=false}};
+el('history').onclick=async()=>{el('past').hidden=false;el('past').textContent=JSON.stringify(await(await fetch('/api/history')).json(),null,2)};init().catch(e=>el('status').textContent=e.message);
+</script></html>

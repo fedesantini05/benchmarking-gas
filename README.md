@@ -105,3 +105,11 @@ Ver `docs/GITHUB_ACTIONS.md` para alcance, permisos y activación por TI.
 La incorporación del trabajo técnico está pendiente: ver
 `docs/DATOS_TECNICOS.md` para documentar campos, fuentes y controles antes de
 automatizarlo. No existe todavía un generador de planillas técnicas.
+
+## Base del ecosistema local
+
+`ecosystem/cli.py` incorpora catálogo, fuentes registradas, descargas locales,
+historial de ejecuciones y una primera pantalla de selección. No es un portal
+corporativo ni habilita años nuevos sin revisión. Ver `docs/ECOSISTEMA.md`.
+El listado completo de participantes se mantiene en configuración local,
+fuera de Git, hasta que se autorice su publicación.

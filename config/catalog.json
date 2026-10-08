@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "companies": [
+    {"id":"ecogas_cuyo","name":"Distribuidora de Gas Cuyana S.A.","country":"AR","sector":"gas_natural","module":"financial","reviewed_years":[2023,2024,2025],"sources":[]},
+    {"id":"efigas","name":"Efigas S.A. E.S.P.","country":"CO","sector":"gas_natural","module":"financial","reviewed_years":[2023,2024,2025],"sources":[{"url":"https://www.efigas.com.co/informes-de-gestion-y-sostenibilidad/","hosts":["www.efigas.com.co","efigas.com.co"],"keywords":["informe","sostenibilidad"],"kind":"management_report","verified_date":"2026-10-08"}]},
+    {"id":"sgc","name":"Southwest Gas Corporation and Subsidiaries","country":"US","sector":"gas_natural","module":"financial","reviewed_years":[2020,2021,2022,2023,2024,2025],"sources":[]},
+    {"id":"potigas","name":"Companhia Potiguar de Gas (Potigas)","country":"BR","sector":"gas_natural","module":"financial","reviewed_years":[2023,2024,2025],"sources":[]},
+    {"id":"compagas","name":"Companhia Paranaense de Gas S.A.","country":"BR","sector":"gas_natural","module":"financial","reviewed_years":[2023,2024,2025],"sources":[{"url":"https://www.compagas.com.br/relacao-com-investidores.html","hosts":["www.compagas.com.br","compagas.com.br"],"keywords":["demonstrações financeiras"],"kind":"financial_statements","verified_date":"2026-10-08"}]}
+  ]
+}
