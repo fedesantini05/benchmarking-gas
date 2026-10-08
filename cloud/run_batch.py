@@ -11,7 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from pilot_adapters import COMPANIES,validate,generate
 from run_company import resolve_config
-from spanish_cases.regression import assert_inputs,compare_packages
+from spanish_cases.regression import assert_inputs,compare_packages,efigas_source_updates
 from cloud.data_bundle import unpack
 
 
@@ -33,6 +33,7 @@ def run(companies,data,output,mode,report_overrides=None):
         try:
             config=resolve_config(json.loads((data/'config/local'/f'{company}.json').read_text(encoding='utf-8-sig')),root=data)
             overrides=(report_overrides or {}).get(company,{})
+            original_reports=dict(config['reports'])
             if any(year not in config['reports'] for year in overrides): raise ValueError('No se autorizan períodos nuevos por sustitución de fuentes')
             config['reports'].update({year:str(Path(path).resolve()) for year,path in overrides.items()})
             validate(company,config)
@@ -47,7 +48,9 @@ def run(companies,data,output,mode,report_overrides=None):
             with tempfile.TemporaryDirectory(prefix=f'{company}-',dir=output) as temporary:
                 workbook=Path(temporary)/f'{company}.xlsx'
                 audit=generate(company,config,workbook)
-                comparison=compare_packages(config['reference'],workbook)
+                updates=efigas_source_updates(config['reference'],original_reports,config['reports'],
+                                              config['report_sha256'],audit['records']) if company=='efigas' and overrides else None
+                comparison=compare_packages(config['reference'],workbook,allowed_source_updates=updates)
                 item.update(status=comparison['status'],comparison=comparison,years=sorted(config['reports']),
                             accounting_checks=audit['checks'],limitations=audit.get('limitations',[]),
                             data_completeness='PARTIAL' if company=='efigas' else 'REVIEWED_CASE')

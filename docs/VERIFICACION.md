@@ -36,3 +36,19 @@ publicó un repositorio remoto. El repositorio local todavía no tiene commit.
 
 Siguiente control: instalación en otra PC y, cuando se levante la pausa de
 llenado, una prueba integral con copias de fuentes y salidas nuevas.
+
+## Actualización 2026-10-08: nombres legibles de fuentes
+
+El generador de Efigas admite PDF descargados con nombres legibles únicamente
+si su SHA-256 coincide con la fuente aprobada. El comparador admite en las
+celdas de Fuente (O) sólo el texto exacto anterior y nuevo derivado de esos
+archivos, períodos, páginas y unidades. Todas las demás partes y bytes,
+incluidos valores, fórmulas, estilos y períodos históricos, siguen comparándose
+estrictamente. No se excluye la columna O de la comparación.
+
+Cada excepción queda registrada en `accepted_source_updates`. El cambio de
+contenido de un PDF, página, unidad o cualquier otra celda exige revisión.
+Se verificó la regeneración local de Efigas 2023–2025 con comparación PASS;
+su información permanece PARTIAL por las limitaciones de los informes.
+Pasaron 92 pruebas automatizadas. Excel de escritorio no fue verificado.
+Los documentos y salidas locales no se publican en GitHub.
