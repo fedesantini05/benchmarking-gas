@@ -22,7 +22,7 @@ def select_companies(value):
     return result
 
 
-def run(companies,data,output,mode):
+def run(companies,data,output,mode,report_overrides=None):
     if mode not in ('verificar','generar'): raise ValueError('Acción no habilitada')
     if output.exists(): raise FileExistsError('Carpeta de resultados existente')
     output.mkdir(parents=True)
@@ -32,10 +32,18 @@ def run(companies,data,output,mode):
         case_dir=output/company
         try:
             config=resolve_config(json.loads((data/'config/local'/f'{company}.json').read_text(encoding='utf-8-sig')),root=data)
+            overrides=(report_overrides or {}).get(company,{})
+            if any(year not in config['reports'] for year in overrides): raise ValueError('No se autorizan períodos nuevos por sustitución de fuentes')
+            config['reports'].update({year:str(Path(path).resolve()) for year,path in overrides.items()})
             validate(company,config)
-            for p in [config['template'],config['reference'],*config['reports'].values()]:
+            for p in [config['template'],config['reference']]:
                 if not Path(p).resolve().is_relative_to(data.resolve()): raise ValueError('Fuente fuera del paquete')
+            for year,p in config['reports'].items():
+                if not Path(p).resolve().is_relative_to(data.resolve()) and year not in overrides:
+                    raise ValueError('Fuente fuera del paquete sin vinculación autorizada')
             assert_inputs(config)
+            item['input_sources']={year:{'path':path,'origin':'MATCHING_LOCAL_DOWNLOAD' if year in overrides else 'APPROVED_LOCAL_PACKAGE',
+                                         'sha256':config.get('report_sha256',{}).get(year)} for year,path in config['reports'].items()}
             with tempfile.TemporaryDirectory(prefix=f'{company}-',dir=output) as temporary:
                 workbook=Path(temporary)/f'{company}.xlsx'
                 audit=generate(company,config,workbook)

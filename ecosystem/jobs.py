@@ -6,6 +6,7 @@ import uuid
 
 from cloud.run_batch import run as generate_batch
 from ecosystem.sources import discover,download,company_folder
+from ecosystem.bindings import bind_reports
 
 
 def now(): return datetime.now(timezone.utc).isoformat()
@@ -46,7 +47,11 @@ def execute(catalog,request,storage,data_root=None,discoverer=discover,downloade
                 item={'company':identity,'status':'INPUTS_REQUIRED','reason':'Documentos locales autorizados no configurados'}
             else:
                 output=folder/identity
-                batch=generator([identity],Path(data_root),output,'generar')
+                overrides=bind_reports(company,data_root,Path(storage).resolve().parent)
+                if overrides:
+                    batch=generator([identity],Path(data_root),output,'generar',report_overrides={identity:overrides})
+                else:
+                    batch=generator([identity],Path(data_root),output,'generar')
                 item=dict(batch['cases'][0])
                 if item['status']=='PASS':
                     item['status']='PARTIAL' if item.get('data_completeness')=='PARTIAL' else 'COMPLETED'

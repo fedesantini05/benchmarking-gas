@@ -1,10 +1,12 @@
 import json
+import hashlib
 from pathlib import Path
 import tempfile
 import unittest
 
 from ecosystem.catalog import import_csv,import_roster,load,select
 from ecosystem.jobs import execute
+from ecosystem.bindings import bind_reports
 from ecosystem.sources import candidates,check_url,discover,download,store_document,company_folder,safe_name
 
 
@@ -13,6 +15,31 @@ SOURCE={'url':'https://example.com/reports','hosts':['example.com'],
 
 
 class EcosystemTests(unittest.TestCase):
+    def binding_fixture(self,root):
+        data=root/'data'; configs=data/'config/local'; configs.mkdir(parents=True)
+        company={'id':'efigas','alias':'Efigas'}; folder=root/'outputs/Efigas'; folder.mkdir(parents=True)
+        config={'report_sha256':{'2024':hashlib.sha256(b'%PDF-reviewed').hexdigest()}}
+        (configs/'efigas.json').write_text(json.dumps(config))
+        return data,company,folder
+
+    def test_matching_download_binding(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t); data,company,folder=self.binding_fixture(root)
+            path=folder/'Efigas - Informe de gestion y sostenibilidad - 2024.pdf'; path.write_bytes(b'%PDF-reviewed')
+            self.assertEqual(bind_reports(company,data,root/'outputs'),{'2024':str(path.resolve())})
+
+    def test_changed_download_blocks_silent_fallback(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t); data,company,folder=self.binding_fixture(root)
+            (folder/'Efigas - Informe contable - 2024.pdf').write_bytes(b'%PDF-changed')
+            with self.assertRaises(ValueError): bind_reports(company,data,root/'outputs')
+
+    def test_summary_does_not_replace_full_report(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t); data,company,folder=self.binding_fixture(root)
+            (folder/'Efigas - Resumen ejecutivo - 2024.pdf').write_bytes(b'%PDF-summary')
+            self.assertEqual(bind_reports(company,data,root/'outputs'),{})
+
     def test_catalog_filters(self):
         catalog={'companies':[{'id':'one','name':'Compañía A','country':'BR','regulator':'R','vertical_integration':'NO'},
                               {'id':'two','name':'Empresa B','country':'AR','regulator':'S','vertical_integration':'SI'}]}

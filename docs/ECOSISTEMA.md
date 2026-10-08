@@ -66,7 +66,13 @@ python ecosystem/cli.py --catalog config/local/company_catalog.json serve --data
 
 La generación requiere el conjunto completo del caso: SGC 2020–2025; los otros
 cuatro 2023–2025. Solicitar 2026 muestra revisión requerida y NO altera el mapeo.
-La descarga de fuentes nuevas no alimenta automáticamente la generación antigua.
+La generación utiliza PDFs completos descargados en la carpeta de la empresa
+únicamente si sus hashes coinciden exactamente con las fuentes ya revisadas.
+El control `input_sources` identifica cada archivo utilizado y su origen.
+Los resúmenes no sustituyen informes completos. Un documento diferente bloquea
+el caso para revisión; no se actualiza su aprobación ni se usa silenciosamente
+la fuente anterior. Los períodos sin descarga siguen usando el paquete aprobado.
+Esto conecta copias idénticas: NO habilita documentos diferentes ni años nuevos.
 Los libros y controles se guardan bajo `outputs/platform`, excluidos de Git.
 La interfaz permite consultar los controles; todavía no incluye descarga por
 botón de cada libro. No sustituye una apertura y revisión en Excel de escritorio.
